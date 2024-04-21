@@ -2,7 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import s from "../Phonebook.module.css";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { AddContactThunk } from "../../redux/contactsOps";
+import { AddContactThunk } from "../../redux/contacts/operations";
 
 const ContactForm = () => {
   const dispatch = useDispatch();

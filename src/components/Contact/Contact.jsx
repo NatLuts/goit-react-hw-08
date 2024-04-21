@@ -2,7 +2,7 @@ import s from "../Phonebook.module.css";
 import { FaUser } from "react-icons/fa6";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { deleteContactThunk } from "../../redux/contactsOps";
+import { deleteContactThunk } from "../../redux/contacts/operations";
 
 const Contact = ({ item }) => {
   const dispatch = useDispatch();
