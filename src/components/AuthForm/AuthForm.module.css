@@ -1,0 +1,28 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form_wrapper {
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 350px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  background: linear-gradient(
+    112.1deg,
+    rgb(78, 90, 129) 11.4%,
+    rgb(140, 149, 180) 70.2%
+  );
+  button {
+    width: fit-content;
+  }
+  input {
+    width: 300px;
+    height: 30px;
+  }
+}
