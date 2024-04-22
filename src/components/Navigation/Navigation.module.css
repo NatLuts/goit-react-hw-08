@@ -5,14 +5,11 @@
   flex-direction: row;
   margin-bottom: 150px;
   border-bottom: 1px solid #2a363b;
-  ul {
-    display: flex;
-    list-style: none;
-    justify-content: space-between;
-    gap: 20px;
-  }
 }
 
 .link {
   font-size: 25px;
+}
+.home {
+  margin-right: 350px;
 }

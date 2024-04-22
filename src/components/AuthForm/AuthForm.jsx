@@ -1,41 +1,34 @@
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import s from "./AuthForm.module.css";
-import * as Yup from "yup";
 import { Link } from "react-router-dom";
+import CustomField from "../CustomField/CustomField";
 
-const FormSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(3, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-  email: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-  password: Yup.string()
-    .min(5, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required"),
-});
-
-const AuthForm = ({ title, onSubmit, initialValues, type }) => {
+const AuthForm = ({
+  title,
+  onSubmit,
+  initialValues,
+  type,
+  validationSchema,
+}) => {
   return (
     <div className={s.wrapper}>
       <Formik
         onSubmit={onSubmit}
         initialValues={initialValues}
-        validationSchema={FormSchema}
+        validationSchema={validationSchema}
       >
         <Form className={s.form_wrapper}>
           {type === "register" && (
-            <Field type="text" name="name" placeholder="Enter your name" />
+            <CustomField name="name" placeholder="Enter your name" />
           )}
-          <Field type="text" name="email" placeholder="Enter your email" />
-          <Field
-            type="password"
+
+          <CustomField name="email" placeholder="Enter your email" />
+          <CustomField
             name="password"
             placeholder="Enter your password"
+            type="password"
           />
+
           <button type="submit">{title}</button>
           <p>
             You{" "}

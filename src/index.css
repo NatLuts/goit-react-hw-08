@@ -49,7 +49,7 @@ button {
 }
 button:hover {
   border-color: rgb(19, 18, 18);
-  background-color: rgb(115, 25, 25);
+  background-color: rgb(77, 137, 228);
 }
 button:focus,
 button:focus-visible {
@@ -77,4 +77,9 @@ ul {
 p,
 h3 {
   margin: 0;
+}
+
+.red {
+  color: rgb(163, 27, 27);
+  font-size: 14px;
 }

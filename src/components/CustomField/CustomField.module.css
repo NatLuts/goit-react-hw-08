@@ -1,0 +1,16 @@
+.input {
+  position: relative;
+}
+
+.icon_btn {
+  position: absolute;
+  transform: translate(-35px);
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  padding: 10px;
+}
+
+.icon_btn:hover {
+  background-color: transparent;
+}
