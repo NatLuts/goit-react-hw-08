@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
-import AuthForm from "../../AuthForm/AuthForm";
+import AuthForm from "../../components/AuthForm/AuthForm";
 
 import * as yup from "yup";
-import { loginThunk } from "../../../redux/auth/operations";
+import { loginThunk } from "../../redux/auth/operations";
 
 const Login = () => {
   const dispatch = useDispatch();

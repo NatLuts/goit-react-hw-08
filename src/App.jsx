@@ -1,18 +1,23 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-import HomePage from "./components/pages/HomePage/HomePage";
-import ContactsPage from "./components/pages/ContactsPage/ContactsPage";
 
-import NotFoundPage from "./components/pages/NotFoundPage/NotFoundPage";
-import RegisterPage from "./components/pages/RegisterPage/RegisterPage";
-import LoginPage from "./components/pages/LoginPage/LoginPage";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { refreshThunk } from "./redux/auth/operations";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import PublicRoute from "./components/Routes/PublicRoute";
-import { selectIsRefreshing } from "./redux/auth/selectors";
 import Loader from "./components/Loader/Loader";
+import { Toaster } from "react-hot-toast";
+import { toastStyles } from "./components/helpers/toastStyles";
+
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const RegistrationPage = lazy(() =>
+  import("./pages/RegistrationPage/RegisterPage")
+);
+const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -26,38 +31,41 @@ const App = () => {
     <Loader />
   ) : (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route
-            path="/contacts"
-            element={
-              <PrivateRoute>
-                <ContactsPage />
-              </PrivateRoute>
-            }
-          />
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute>
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
 
-          <Route
-            path="/register"
-            element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-        </Route>
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <RegistrationPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+          </Route>
 
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        <Toaster {...toastStyles()} />
+      </Suspense>
     </>
   );
 };

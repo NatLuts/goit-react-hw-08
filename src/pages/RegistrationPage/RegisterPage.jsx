@@ -1,11 +1,13 @@
 import { useDispatch } from "react-redux";
-import AuthForm from "../../AuthForm/AuthForm";
-import { registerThunk } from "../../../redux/auth/operations";
-import { toast } from "react-toastify";
-import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
-const RegisterPage = () => {
+import AuthForm from "../../components/AuthForm/AuthForm";
+import { registerThunk } from "../../redux/auth/operations";
+
+import * as yup from "yup";
+import { toast } from "react-hot-toast";
+
+const RegistrationPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -50,4 +52,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default RegistrationPage;
