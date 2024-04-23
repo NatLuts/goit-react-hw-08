@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import AuthForm from "../../components/AuthForm/AuthForm";
-import { registerThunk } from "../../redux/auth/operations";
+import { register } from "../../redux/auth/operations";
 
 import * as yup from "yup";
 import { toast } from "react-hot-toast";
@@ -30,7 +30,7 @@ const RegistrationPage = () => {
   });
 
   const handleSubmit = (values) => {
-    dispatch(registerThunk(values))
+    dispatch(register(values))
       .unwrap()
       .then((data) => {
         toast.success(`Welcome,${data.user.name}!`);

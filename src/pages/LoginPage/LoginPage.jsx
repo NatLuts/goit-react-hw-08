@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import AuthForm from "../../components/AuthForm/AuthForm";
 
 import * as yup from "yup";
-import { loginThunk } from "../../redux/auth/operations";
+import { login } from "../../redux/auth/operations";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Login = () => {
   });
 
   const handleSubmit = (values) => {
-    dispatch(loginThunk(values));
+    dispatch(login(values));
   };
 
   const initialValues = {

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import s from "./Navigation.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn, selectUser } from "../../redux/auth/selectors";
-import { logoutThunk } from "../../redux/auth/operations";
+import { logout } from "../../redux/auth/operations";
 
 const buildLinkClass = ({ isActive }) => {
   return clsx(s.link, isActive && s.active);
@@ -22,11 +22,13 @@ const Navigation = () => {
             Home
           </NavLink>
         </li>
-        <p>{user.name}</p>
+        <p className={s.user}>{user.name}</p>
         <li>
-          <NavLink className={buildLinkClass} to="/contacts">
-            Contacts
-          </NavLink>
+          {isLoggedIn && (
+            <NavLink className={buildLinkClass} to="/contacts">
+              Contacts
+            </NavLink>
+          )}
         </li>
         {!isLoggedIn && (
           <>
@@ -43,7 +45,11 @@ const Navigation = () => {
           </>
         )}
         {isLoggedIn && (
-          <button type="button" onClick={() => dispatch(logoutThunk())}>
+          <button
+            className={s.logout}
+            type="button"
+            onClick={() => dispatch(logout())}
+          >
             Logout
           </button>
         )}

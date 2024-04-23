@@ -3,7 +3,7 @@ import Layout from "./components/Layout/Layout";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Suspense, lazy, useEffect } from "react";
-import { refreshThunk } from "./redux/auth/operations";
+import { refreshUser } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import PublicRoute from "./components/Routes/PublicRoute";
@@ -15,7 +15,7 @@ const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() =>
-  import("./pages/RegistrationPage/RegisterPage")
+  import("./pages/RegistrationPage/RegistrationPage")
 );
 const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
 
@@ -24,7 +24,7 @@ const App = () => {
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(refreshThunk());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return isRefreshing ? (

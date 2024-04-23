@@ -13,3 +13,18 @@
 .home {
   margin-right: 350px;
 }
+
+.user {
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: underline;
+  margin-right: 20px;
+  color: rgb(255, 140, 0);
+}
+.logout {
+  height: 30px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
